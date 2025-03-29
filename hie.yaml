@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "app/Main.hs"
+      component: "hello-wayland-hs:exe:hello-wayland-hs"
+
+    - path: "src"
+      component: "lib:hello-wayland-hs"
