@@ -1,3 +1,5 @@
+-- Manual first attempt at writing client bindings to libwayland-client
+-- Mostly replaced with haskell-wayland bindings
 module MyModel where
 
 #include <wayland-client.h>

@@ -68,7 +68,7 @@ executable hello-wayland-hs
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    hello-wayland-hs, base >=4.20.0.0
+    build-depends:    hello-wayland-hs, base >=4.20.0.0, haskell-wayland
 
     -- Directories containing source files.
     hs-source-dirs:   app
