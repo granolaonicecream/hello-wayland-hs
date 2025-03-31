@@ -68,20 +68,20 @@ executable hello-wayland-hs
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    hello-wayland-hs, base ^>=4.17.2.1
+    build-depends:    hello-wayland-hs, base >=4.20.0.0
 
     -- Directories containing source files.
     hs-source-dirs:   app
 
     -- Base language which the package is written in.
-    default-language: GHC2021
+    default-language: GHC2024
 
 library
-    build-depends: base, shared-memory, bytestring
+    build-depends: base, haskell-wayland, shared-memory, bytestring
     hs-source-dirs: src
     exposed-modules:
         MyModel, Shm, Buffer, Constants
-    default-language: GHC2021
+    default-language: GHC2024
     pkgconfig-depends:
         wayland-client
     includes:
