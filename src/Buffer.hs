@@ -11,6 +11,7 @@ import qualified Data.ByteString as B
 
 import Shm
 import MyModel (Shm, Buffer, wlShmCreatePool, wlShmPoolCreateBuffer)
+import qualified Graphics.Wayland.Client as WLC
 
 -- convenience
 fi :: forall a b. (Integral a, Num b) => a -> b
@@ -29,7 +30,7 @@ size = height * stride
 -- Enum from C headers
 wlShmFormatARGB8888 = 0
 
-createBuffer :: Ptr Shm -> IO (Ptr Buffer)
+createBuffer :: WLC.Shm -> IO (WLC.Buffer)
 createBuffer shm = do
     -- Allocate a shared memory file with the right size
     fd <- createShmFile size
@@ -37,8 +38,8 @@ createBuffer shm = do
     -- Map the shared memory file
     shmData <- mmap nullPtr (fi size) (protRead <> protWrite)
                     (mkMmapFlags mapShared mempty) (fi fd) 0
-    shmPool <- wlShmCreatePool shm fd size
-    buffer <- wlShmPoolCreateBuffer shmPool 0 width height stride wlShmFormatARGB8888
+    shmPool <- WLC.shmCreatePool shm (fromIntegral fd) (fromIntegral size)
+    buffer <- WLC.shmPoolCreateBuffer shmPool 0 (fi width) (fi height) (fi stride) (fi wlShmFormatARGB8888)
     -- Now that we've mapped the file and created the wl_buffer, we no longer
     -- need to keep the file descriptor opened
     closeFD fd

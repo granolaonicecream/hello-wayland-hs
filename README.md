@@ -1,5 +1,5 @@
 # hello-wayland-hs
-This is a reimplementation of https://github.com/emersion/hello-wayland but with haskell FFI bindings to libwayland-client.  The bindings here are manually created, rather than generated from the protocol XML files.
+This is a reimplementation of https://github.com/emersion/hello-wayland but with haskell FFI bindings to libwayland-client.
 
 The purpose is to show:
 
